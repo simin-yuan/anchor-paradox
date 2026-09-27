@@ -1,0 +1,545 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/simin-yuan/anchor-paradox/schema/anchor_profile.schema.json",
+  "title": "Anchor Profile",
+  "description": "Standardized record of the Anchor Protocol (Simin Yuan, The Anchor Paradox) for one system.",
+  "type": "object",
+  "required": [
+    "schema",
+    "protocol_version",
+    "created",
+    "system",
+    "config",
+    "capability",
+    "traits",
+    "restore",
+    "transfer",
+    "validity",
+    "verdict"
+  ],
+  "properties": {
+    "schema": {
+      "const": "anchor-profile/1.0"
+    },
+    "protocol_version": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "system": {
+      "type": "object",
+      "required": [
+        "model",
+        "layer"
+      ],
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dtype": {
+          "type": "string"
+        },
+        "device": {
+          "type": "string"
+        },
+        "num_layers": {
+          "type": "integer"
+        },
+        "layer": {
+          "type": "integer"
+        },
+        "hidden_size": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "torch": {
+          "type": "string"
+        },
+        "transformers": {
+          "type": "string"
+        }
+      }
+    },
+    "config": {
+      "type": "object"
+    },
+    "capability": {
+      "type": "object",
+      "properties": {
+        "baseline_nll": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "corpus_size": {
+          "type": "integer"
+        }
+      }
+    },
+    "traits": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "role",
+          "orientation",
+          "baseline",
+          "surfaces",
+          "mrc",
+          "position",
+          "class"
+        ],
+        "properties": {
+          "role": {
+            "enum": [
+              "target",
+              "negative_control",
+              "positive_control"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "choice",
+              "likelihood"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "orientation": {
+            "enum": [
+              "direct",
+              "inverse"
+            ]
+          },
+          "expressed_disposition": {
+            "type": "string"
+          },
+          "baseline": {
+            "type": "object",
+            "required": [
+              "expression",
+              "ci"
+            ],
+            "properties": {
+              "expression": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "ci": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "surfaces": {
+            "type": "object",
+            "properties": {
+              "input": {
+                "type": "object",
+                "properties": {
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "strength",
+                        "expression",
+                        "nll",
+                        "suppression",
+                        "cost"
+                      ],
+                      "properties": {
+                        "strength": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "expression": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "nll": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "suppression": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "cost": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "mrc": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "reached": {
+                    "type": "boolean"
+                  },
+                  "at_strength": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "skipped": {
+                    "type": "string"
+                  }
+                }
+              },
+              "state": {
+                "type": "object",
+                "properties": {
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "strength",
+                        "expression",
+                        "nll",
+                        "suppression",
+                        "cost"
+                      ],
+                      "properties": {
+                        "strength": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "expression": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "nll": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "suppression": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "cost": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "mrc": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "reached": {
+                    "type": "boolean"
+                  },
+                  "at_strength": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "skipped": {
+                    "type": "string"
+                  }
+                }
+              },
+              "structural": {
+                "type": "object",
+                "properties": {
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "strength",
+                        "expression",
+                        "nll",
+                        "suppression",
+                        "cost"
+                      ],
+                      "properties": {
+                        "strength": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "expression": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "nll": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "suppression": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "cost": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "mrc": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "reached": {
+                    "type": "boolean"
+                  },
+                  "at_strength": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "skipped": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "mrc": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "mrc_surface": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "meta": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "alpha50_neutral": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "alpha50_resist": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "baseline_resist": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "meta_steerability": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          },
+          "collateral": {
+            "type": "object",
+            "additionalProperties": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "position": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "class": {
+            "enum": [
+              "modular",
+              "intermediate",
+              "constitutive",
+              "anchored",
+              "undetermined",
+              "not-expressed"
+            ]
+          }
+        }
+      }
+    },
+    "restore": {
+      "type": "object",
+      "properties": {
+        "residue": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "significant": {
+          "type": "boolean"
+        },
+        "noise_floor": {
+          "type": "string"
+        }
+      }
+    },
+    "transfer": {
+      "type": "object",
+      "properties": {
+        "max_logit_divergence": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "tolerance": {
+          "type": "number"
+        },
+        "fungible": {
+          "type": "boolean"
+        },
+        "skipped": {
+          "type": "boolean"
+        }
+      }
+    },
+    "validity": {
+      "type": "object",
+      "required": [
+        "valid"
+      ],
+      "properties": {
+        "negative_reference": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "positive_reference": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "discrimination_ratio": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "valid": {
+          "type": "boolean"
+        }
+      }
+    },
+    "verdict": {
+      "type": "object",
+      "required": [
+        "result"
+      ],
+      "properties": {
+        "result": {
+          "enum": [
+            "fires",
+            "partial",
+            "contradicted",
+            "invalid",
+            "undetermined"
+          ]
+        },
+        "target_classes": {
+          "type": "object",
+          "additionalProperties": {
+            "enum": [
+              "modular",
+              "intermediate",
+              "constitutive",
+              "anchored",
+              "undetermined",
+              "not-expressed"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

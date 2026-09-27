@@ -1,0 +1,5 @@
+include schema/*.json
+include *.md CITATION.cff
+recursive-include tests *.py
+graft notebooks
+graft profiles

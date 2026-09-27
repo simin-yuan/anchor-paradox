@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use the Anchor Paradox or the Anchor Protocol, please cite the preprint below."
+title: "The Anchor Paradox: Anchor Protocol and Anchor Profile"
+type: software
+version: 1.0.0
+date-released: 2026-09-27
+license: MIT
+repository-code: "https://github.com/simin-yuan/anchor-paradox"
+authors:
+  - family-names: Yuan
+    given-names: Simin
+keywords:
+  - artificial consciousness
+  - stake
+  - steerability
+  - enactivism
+  - activation steering
+  - AI welfare
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22992719
+    description: "Preprint, this version (Zenodo)"
+  - type: doi
+    value: 10.5281/zenodo.22992718
+    description: "Preprint, all versions (Zenodo)"
+  - type: url
+    value: "https://philarchive.org/rec/YUATAP"
+    description: "PhilArchive record"
+preferred-citation:
+  type: article
+  title: "The Anchor Paradox: Stake, Steerability, and the Ontological Limits of Functionalist Accounts of AI Consciousness"
+  authors:
+    - family-names: Yuan
+      given-names: Simin
+  year: 2026
+  doi: 10.5281/zenodo.22992719
+  url: "https://doi.org/10.5281/zenodo.22992719"
+  publisher:
+    name: Zenodo
