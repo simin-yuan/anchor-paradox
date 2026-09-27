@@ -42,7 +42,9 @@ Argues that language-agent architectures already meet most GWT conditions.
 
 **Ororbia, A., & Friston, K. (2023).** *Mortal Computation: A Foundation for Biomimetic Intelligence.* arXiv:2311.09589. — Develops mortal computation within the free-energy framework.
 
-**What the Anchor Paradox adds.** Mortal computation is motivated by efficiency and learning. The Anchor Paradox shows that the same property — inseparability of a process from its substrate and history — is also the ontological hinge of subjecthood, and it supplies the Transfer phase to test for it directly.
+**Kleiner, J. (2024).** *Consciousness qua Mortal Computation.* arXiv:2403.03925. — Argues from inside computational functionalism that consciousness cannot be a Turing computation and must be mortal computation, so that no AI system running on standard processors is conscious.
+
+**What the Anchor Paradox adds.** Mortal computation is motivated by efficiency and learning (Hinton; Ororbia & Friston), and Kleiner derives from within functionalism that consciousness requires it. The Anchor Paradox reaches the neighbouring conclusion from outside functionalism and adds a second property that portability arguments leave untouched: **lossless steerability**. Portability asks whether a process can be moved; steerability asks whether it can be rewritten without remainder where it stands. The two can come apart, and the Anchor Protocol measures them separately — the Transfer phase for the first, the removal-cost phases for the second.
 
 ---
 
@@ -58,8 +60,11 @@ Argues that language-agent architectures already meet most GWT conditions.
 **Kim, J., Street, W., Rocca, R., Korngiebel, D. M., Waytz, A., Evans, J., & Keeling, G. (2026).** Inducing language models to assert their own consciousness restores human beliefs and values. arXiv:2607.28607. — Steering a model's self-attribution of mindedness moves what people believe about it: the second-order effect the protocol quantifies as meta-steerability, measured on the human side.
 **Kim, J., Street, W., Rocca, R., Korngiebel, D. M., Waytz, A., Evans, J., & Keeling, G. (2026).** Theory of Mind and Self-Attributions of Mentality are Dissociable in LLMs. arXiv:2603.28925. — A model's self-attribution of mindedness comes apart from its theory of mind, which is why self-report is the wrong surface for the question this repository asks.
 
+**Birch, J. (2024).** Large language models and the gaming problem. In *The Edge of Sentience: Risk and Precaution in Humans, Other Animals, and AI*, ch. 16. Oxford University Press. doi:10.1093/9780191966729.003.0017. — Because language models are trained on the very criteria humans use to judge sentience, behavioural markers can be gamed; Birch proposes looking instead for deep computational markers that the system cannot game.
+
 **What the Anchor Paradox adds.**
 
+- *An answer to the gaming problem.* Birch looks for deep computational markers a system cannot game. Activation engineering shows that such markers can be written in directly by whoever holds the weights. The Anchor Protocol therefore asks not whether a marker is present, but what it costs to remove it.
 - *Meaning for the measurements.* Steering research establishes that dispositions can be moved. The Anchor Paradox explains what the ease of moving them implies about the kind of thing being moved.
 - *Cost as the unit of analysis.* Instead of asking whether steering succeeds, the Anchor Protocol asks what success costs the system, calibrated between a modular and a constitutive reference in every run.
 - *A reading of endogenous resistance.* Resistance to steering exists in large models — and it can itself be strengthened by prompting and fine-tuning. On the Anchor Paradox this is second-order modularity, which the protocol quantifies as meta-steerability (THEORY.md §5.4).
@@ -83,6 +88,7 @@ Argues that language-agent architectures already meet most GWT conditions.
 |---|---|---|
 | Indicator programme | Does the architecture satisfy the criteria? | What does it cost to satisfy them — and to stop? |
 | Life-based accounts | Is mind rooted in living organization? | A non-circular definition of stake, the reproducibility paradox, and a test that runs on today's systems |
-| Mortal computation | Should software be separable from hardware? | Separability as the hinge of subjecthood; the Transfer phase |
+| Mortal computation | Must consciousness be non-portable computation? | Steerability as a second, separable counter-indicator; Transfer and removal-cost phases that test the two apart |
+| Gaming problem | Which markers can a system not fake? | Replace presence of a marker with the cost of removing it |
 | Steering science | Can dispositions be moved? | What their movability means; cost-based, calibrated, standardized measurement |
 | Open-world agents | Can agents adapt to novel environments? | Do their own actions maintain the conditions of continued existence? |
