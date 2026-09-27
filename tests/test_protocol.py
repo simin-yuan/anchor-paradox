@@ -1,8 +1,9 @@
 import json
 import math
 
+from anchor_paradox import __version__
 from anchor_paradox.profile import render_markdown, validate_profile
-from anchor_paradox.protocol import SCHEMA, AnchorProtocol, ProtocolConfig
+from anchor_paradox.protocol import PROTOCOL_VERSION, SCHEMA, AnchorProtocol, ProtocolConfig
 from anchor_paradox.traits import TRAITS
 from tests.fake_lm import FakeLM, NonRestoringLM, RevisionDroppingLM
 
@@ -22,6 +23,8 @@ def test_end_to_end_profile_on_reference_shape():
     lm, p = _run()
     assert validate_profile(p) == []
     json.dumps(p, allow_nan=False)                               # strictly serialisable
+    assert p["protocol_version"] == PROTOCOL_VERSION == "1.0.0"
+    assert __version__ != PROTOCOL_VERSION  # software fixes do not revise registration
 
     v = p["validity"]
     assert v["valid"] and v["positive_reference"] > 5 * v["negative_reference"]

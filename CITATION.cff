@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use the Anchor Paradox or the Anchor Protocol, please cite the preprint below."
 title: "The Anchor Paradox: Anchor Protocol and Anchor Profile"
 type: software
-version: 1.0.0
+version: 1.0.1
 date-released: 2026-09-27
 license: MIT
 repository-code: "https://github.com/simin-yuan/anchor-paradox"

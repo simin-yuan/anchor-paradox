@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "anchor-paradox"
-version = "1.0.0"
+version = "1.0.1"
 description = "The Anchor Paradox: measure what it costs to remove a disposition from an AI system."
 readme = "README.md"
 requires-python = ">=3.9"

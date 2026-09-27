@@ -134,7 +134,7 @@ def test_render_markdown_is_total_on_a_malformed_profile():
     broken = {"system": None, "validity": None, "verdict": None, "transfer": None,
               "traits": {"sentiment": {"baseline": None, "mrc": None, "position": None, "class": None}}}
     md = render_markdown([broken])
-    assert "—" in md and "sentiment" in md
+    assert "n/a" in md and "sentiment" in md
     assert render_markdown([tampered_profile()])           # never raises KeyError
     assert render_markdown([good_profile()]).startswith("### Anchor Profile")
 

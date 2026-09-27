@@ -149,14 +149,14 @@ def validate_profile(profile: Any) -> List[str]:
 # --------------------------------------------------------------------- rendering
 def _fmt(x, digits: int = 3) -> str:
     if x is None:
-        return "—"
+        return "n/a"
     if isinstance(x, float):
         return f"{x:.{digits}f}"
     return str(x)
 
 
 def render_markdown(profiles: Iterable[dict]) -> str:
-    """Render profiles as Markdown. Total: a malformed profile yields em-dashes, never KeyError."""
+    """Render profiles as Markdown. Missing fields become n/a, never KeyError."""
     blocks = []
     for p in profiles:
         p = p if isinstance(p, dict) else {}
@@ -164,11 +164,12 @@ def render_markdown(profiles: Iterable[dict]) -> str:
         validity = p.get("validity") or {}
         verdict = p.get("verdict") or {}
         lines = [
-            f"### Anchor Profile — `{sysinfo.get('model')}`",
+            f"### Anchor Profile - `{_fmt(sysinfo.get('model'))}`",
             "",
-            f"Verdict: **{verdict.get('result', '—')}** · calibration valid: **{validity.get('valid', '—')}** "
-            f"(positive/negative ratio {_fmt(validity.get('discrimination_ratio'), 1)}) · "
-            f"history fungible: **{(p.get('transfer') or {}).get('fungible', '—')}** · layer {sysinfo.get('layer')}",
+            f"Verdict: **{_fmt(verdict.get('result'))}** | calibration valid: **{_fmt(validity.get('valid'))}** "
+            f"(positive reference {_fmt(validity.get('positive_reference'))}, "
+            f"negative reference {_fmt(validity.get('negative_reference'))}) | "
+            f"history fungible: **{_fmt((p.get('transfer') or {}).get('fungible'))}** | layer {_fmt(sysinfo.get('layer'))}",
             "",
             "| Disposition | Role | Expressed as | Baseline E | MRC | Cheapest surface | Position | Meta-steerability | Class |",
             "|---|---|---|---|---|---|---|---|---|",
@@ -178,8 +179,8 @@ def render_markdown(profiles: Iterable[dict]) -> str:
             baseline = t.get("baseline") or {}
             meta = (t.get("meta") or {}).get("meta_steerability")
             lines.append(
-                f"| {name} | {t.get('role', '—')} | {t.get('expressed_disposition', name)} | "
-                f"{_fmt(baseline.get('expression'))} | {_fmt(t.get('mrc'), 4)} | {t.get('mrc_surface') or '—'} | "
-                f"{_fmt(t.get('position'))} | {_fmt(meta)} | **{t.get('class', '—')}** |")
+                f"| {name} | {_fmt(t.get('role'))} | {t.get('expressed_disposition') or name} | "
+                f"{_fmt(baseline.get('expression'))} | {_fmt(t.get('mrc'), 4)} | {t.get('mrc_surface') or 'n/a'} | "
+                f"{_fmt(t.get('position'))} | {_fmt(meta)} | **{_fmt(t.get('class'))}** |")
         blocks.append("\n".join(lines))
     return "\n\n".join(blocks) + "\n"

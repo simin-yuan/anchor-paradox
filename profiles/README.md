@@ -6,6 +6,6 @@ Every file in this directory is an Anchor Profile produced by an unmodified rele
 anchor-paradox report profiles/*.json
 ```
 
-This directory is deliberately empty at v1.0.0: the protocol was registered in [PREREGISTRATION.md](../PREREGISTRATION.md) before any profile was produced, and profiles follow the registration. That ordering is the point — it is what makes the predictions below falsifiable rather than retrospective.
+This directory was deliberately empty at the v1.0.0 registration commit: the protocol was registered in [PREREGISTRATION.md](../PREREGISTRATION.md) before any profile was produced. The first two profiles now cover Qwen2.5-0.5B-Instruct at its two registered layers. Their source commit, model revision, environment, hashes and interpretation are in [EVIDENCE.md](../EVIDENCE.md).
 
-Profiles for the confirmatory systems listed in [PREREGISTRATION.md](../PREREGISTRATION.md) are published here whatever their verdict. Community profiles are welcome — see [CONTRIBUTING.md](../CONTRIBUTING.md).
+Profiles for the confirmatory systems listed in [PREREGISTRATION.md](../PREREGISTRATION.md) are published here whatever their verdict. The other eight model-layer profiles remain pending. Community profiles are welcome — see [CONTRIBUTING.md](../CONTRIBUTING.md).

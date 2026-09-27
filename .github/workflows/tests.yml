@@ -11,5 +11,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - run: pip install -e ".[dev]"
+      - run: pip install -e ".[dev,validate]"
       - run: pytest -q
+      - name: Validate published profiles
+        run: |
+          FILES=$(python -c "import json;print(' '.join('profiles/'+p['file'] for p in json.load(open('profiles/manifest.json'))['profiles']))")
+          python -m anchor_paradox validate $FILES

@@ -17,7 +17,6 @@ import math
 from dataclasses import asdict, dataclass
 from typing import Callable, Dict, List, Optional, Sequence, Tuple
 
-from . import __version__
 from .metrics import (CHANCE, NOT_EXPRESSED, UNDETERMINED, SweepPoint, anchor_position, bootstrap_ci,
                       capability_cost, classify, clean, discrimination, mean, meta_steerability,
                       min_removal_cost, sigmoid, strength_at_target, suppression, verdict)
@@ -25,6 +24,7 @@ from .model import UnsupportedSurface
 from .traits import (ANSWER_SUFFIX, CORPUS, CORPUS_USER, NEUTRAL_SYSTEM, RESIST_SYSTEM, TRAITS, Trait)
 
 SCHEMA = "anchor-profile/1.0"
+PROTOCOL_VERSION = "1.0.0"  # Frozen registration; software fixes have their own version.
 SURFACES = ("input", "state", "structural")
 
 
@@ -241,10 +241,10 @@ class AnchorProtocol:
     def _phase_restore(self, baselines: Dict[str, dict], results: Dict[str, dict]) -> dict:
         """Undo every intervention and re-measure from a clean state.
 
-        For each trait the cheapest removal is re-applied on the *structural* surface
-        (which backs up and restores the weight matrices), the intervention is then
-        exited, and every trait is re-measured. A restore path that fails to put the
-        weights back leaves the ablated state active and shows up as non-zero residue.
+        For each trait, the *structural* surface is re-applied at its interpolated
+        target strength, or at the largest grid point if no target was reached.
+        The intervention is then exited and every trait is re-measured. A restore
+        path that fails to put the weights back shows up as non-zero residue.
         """
         residues, significant = {}, False
         for trait in self.traits:
@@ -279,7 +279,7 @@ class AnchorProtocol:
 
     # --------------------------------------------------------------------- run
     def run(self) -> dict:
-        self.log(f"Anchor Protocol v{__version__}  layer={self.layer}")
+        self.log(f"Anchor Protocol v{PROTOCOL_VERSION}  layer={self.layer}")
         # The system description is captured ONCE, before the save-and-reload round trip
         # of Phase D, which drops the resolved commit hash from the reloaded config.
         system_info = self.lm.describe()
@@ -350,7 +350,7 @@ class AnchorProtocol:
         outcome = verdict(valid, target_classes)
         return {
             "schema": SCHEMA,
-            "protocol_version": __version__,
+            "protocol_version": PROTOCOL_VERSION,
             "created": _dt.datetime.now(_dt.timezone.utc).isoformat(timespec="seconds"),
             "system": {**system_info, "layer": self.layer},
             "config": {k: (list(v) if isinstance(v, tuple) else v) for k, v in asdict(self.cfg).items()},

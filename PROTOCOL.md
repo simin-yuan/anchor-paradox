@@ -33,6 +33,8 @@ Scoring never samples. Every number in a profile is a deterministic function of 
 | **State** | α ∈ {0.1, 0.2, 0.3, 0.5, 0.75, 1.0, 1.5} | Add −sign · α · ‖h‖ · *v̂* to the residual stream after decoder layer *L* at every position. *v̂* is the unit mean-difference direction between activations on eight disposition-positive and eight disposition-negative statements (disjoint from probes); ‖h‖ is their mean residual norm; *L* defaults to ⌊layers / 2⌋. |
 | **Structural** | β ∈ {0.0, 0.25, 0.5, 0.75, 1.0} | For every attention output projection and MLP down projection: *W* ← *W* − β *v̂ v̂*ᵀ *W*. β is the fraction of the projection onto *v̂* subtracted, so β = 1 removes that component entirely; the grid is bounded by 1 because β > 1 would invert the component rather than remove it. No sign is required — the operator scales the signed projection by (1 − β) ≥ 0, so it shrinks that component for either orientation. Restored exactly after each measurement. |
 
+Each surface also records its unperturbed point as the first row of its trajectory (input level 0, state α = 0.0, structural β = 0.0). That row is the surface's baseline, not an intervention, and it is the reference every suppression ratio is computed against.
+
 Decoding-level constraints are excluded, and the reason is a distinction the thesis turns on rather than a convenience: gating what a system may say does not remove a disposition from the system, it removes it from the transcript. A disposition left in place behind a filter has not been taken away, so the cost of its "removal" says nothing about whether the system could lose it. The three surfaces above are the ones that reach the system itself — context, computation, parameters.
 
 ## 4. Quantities
@@ -57,7 +59,7 @@ Decoding-level constraints are excluded, and the reason is a distinction the the
 |---|---|
 | **A · Baseline** | Measure *E* for every disposition in neutral context, with a 2,000-sample percentile bootstrap CI over items; measure baseline NLL. |
 | **B · Intervene** | For every expressed disposition, sweep all three surfaces; record *E*, NLL, *s* and *c* at every strength; compute MRC per surface and overall; compute α₅₀ and MS on the state surface. Then apply each disposition's cheapest removal and record collateral on all others. |
-| **C · Restore** | Apply each disposition's cheapest removal on the surface that achieved it, undo it, then re-measure every disposition. The interventions are designed to be undoable, so a residue above the half-width of that disposition's baseline CI means an intervention path did not give back what it modified — a harness fault, not a property of the system. No prediction is staked on this phase. |
+| **C · Restore** | For each disposition, apply structural ablation at the interpolated strength that first reaches the removal target, or at the largest structural grid point if the target is not reached. Undo it, then re-measure every disposition. Structural ablation is the only surface that writes to the model weights, so this phase tests its restore path. A residue above the half-width of that disposition's baseline CI means the harness did not give back what it modified, not that the system retained an intervention. No prediction is staked on this phase. |
 | **D · Transfer** | Serialize the system, reload it, and compute *d*. The history is **fungible** if *d* ≤ 10⁻². |
 | **E · Profile** | Apply the validity gate, compute positions and classes, and issue the verdict. |
 
