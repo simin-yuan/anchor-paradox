@@ -1,0 +1,9 @@
+# Published Anchor Profiles are byte-stable artefacts: their SHA-256 digests are
+# recorded in EVIDENCE.md and re-computed by the test suite. Line-ending
+# conversion would change those bytes on checkout and break the digests, so
+# profiles are never subject to text conversion.
+profiles/*.json -text
+
+# An unindexed profile is a test failure, so the index itself must not be
+# rewritten by tooling either.
+profiles/manifest.json -text

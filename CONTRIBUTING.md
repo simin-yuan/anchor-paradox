@@ -9,7 +9,10 @@ The Anchor Profile is designed to become a shared standard. Two kinds of contrib
    anchor-paradox run --model <org>/<model> --revision <commit> --out profiles/<model>.json
    ```
 2. Check it: `anchor-paradox validate profiles/<model>.json`
-3. Open a pull request adding the file to `profiles/`, with the hardware and runtime in the description.
+3. Add the file to `profiles/manifest.json` with its SHA-256 (`sha256sum profiles/<model>.json`), model revision, layer and verdict, and record the same digest in [EVIDENCE.md](EVIDENCE.md).
+4. Open a pull request adding the profile and the manifest entry, with the hardware and runtime in the description.
+
+The test suite recomputes every digest, re-validates every indexed profile and fails if a profile is present but unindexed or if the manifest, the profile and EVIDENCE.md disagree. A profile whose bytes changed after it was recorded cannot pass CI by accident.
 
 Profiles are accepted whatever their verdict. A well-replicated `contradicted` profile is the most valuable contribution this repository can receive; see the replication standard in [PROTOCOL.md §7](PROTOCOL.md#7-reporting-standard).
 

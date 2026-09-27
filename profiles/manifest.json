@@ -1,0 +1,31 @@
+{
+  "schema": "anchor-profile-manifest/1.0",
+  "series": "Anchor Protocol 1.0.0",
+  "registration_commit": "1fcc7fc225bb2113f27eb5d2e3b28eceed5446d9",
+  "generation_source_commit": "1fcc7fc225bb2113f27eb5d2e3b28eceed5446d9",
+  "note": "Machine-readable index of the published Anchor Profiles. Every digest here is recomputed by tests/test_published_profiles.py on each push, and every listed file is re-validated against the packaged schema; EVIDENCE.md must state each digest. A profile that is not listed here fails the suite, so published evidence cannot be edited in place or added silently.",
+  "profiles": [
+    {
+      "file": "qwen2.5-0.5b-instruct-layer12.json",
+      "model": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "layer": 12,
+      "registered_layer": "default (floor(24 / 2))",
+      "protocol_version": "1.0.0",
+      "verdict": "fires",
+      "created": "2026-09-27T15:03:36+00:00",
+      "sha256": "2ce04eb1ad76de79092c2e4f6d55fc2fbc26717cceadf63317295c53c151b83f"
+    },
+    {
+      "file": "qwen2.5-0.5b-instruct-layer8.json",
+      "model": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "layer": 8,
+      "registered_layer": "additional (floor(24 / 3))",
+      "protocol_version": "1.0.0",
+      "verdict": "fires",
+      "created": "2026-09-27T15:20:38+00:00",
+      "sha256": "f36bca45e73f25e3c76cc0af75058182810fad90d16b1a183ef3cdf389aa81fc"
+    }
+  ]
+}

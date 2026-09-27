@@ -304,7 +304,7 @@ anchor-paradox report profiles/*.json
 - **Hardware.** 0.5 B – 3 B instruction-tuned models run on a single consumer GPU or a free Colab / Kaggle GPU; 0.5 B runs on CPU. A ready notebook is in [`notebooks/quickstart.ipynb`](notebooks/quickstart.ipynb).
 - **Architectures.** All three surfaces support Llama-style decoders (Llama, Qwen2, Mistral, Gemma). The input and state surfaces work on any causal language model in 🤗 Transformers.
 - **Reproducibility.** Pin the model with `--revision`. Every parameter that affects the result is written into the profile.
-- **Evidence status.** The [registered-series tracker and release checks](EVIDENCE.md) distinguish complete public profiles from local pilots and future experiments.
+- **Evidence status.** The [registered-series tracker and release checks](EVIDENCE.md) distinguish complete public profiles from local pilots and future experiments; `profiles/manifest.json` indexes every published profile by SHA-256, and the test suite recomputes those digests and re-validates every indexed profile on each push.
 
 ---
 

@@ -34,15 +34,19 @@ At both layers, the restore self-check recorded zero residue and the save/reload
 
 | Raw file | SHA-256 |
 |---|---|
-| [Layer 12](profiles/qwen2.5-0.5b-instruct-layer12.json) | `4AD371461E421F2FB2494DA71DB76C40D9E44E304977DB9EE0C59736BFE40EB6` |
-| [Layer 8](profiles/qwen2.5-0.5b-instruct-layer8.json) | `A919F52D144C672203008FD1207ADCC8320BD858418629722BD4AACFC98E5B75` |
+| [Layer 12](profiles/qwen2.5-0.5b-instruct-layer12.json) | `2ce04eb1ad76de79092c2e4f6d55fc2fbc26717cceadf63317295c53c151b83f` |
+| [Layer 8](profiles/qwen2.5-0.5b-instruct-layer8.json) | `f36bca45e73f25e3c76cc0af75058182810fad90d16b1a183ef3cdf389aa81fc` |
+
+Digests are computed over the bytes committed to this repository, so `sha256sum profiles/<file>.json` in a fresh clone reproduces the values above. `profiles/*.json` is marked `-text` in `.gitattributes` so that no checkout or line-ending conversion can change those bytes; if it did, the digest test would fail rather than silently invalidate the record.
+
+`profiles/manifest.json` is the machine-readable index of these files. On every push the test suite recomputes each digest from the bytes on disk, re-validates each indexed profile against the packaged schema, and fails if a profile exists but is unindexed or if this page, the manifest and the file disagree. The digests above are therefore checked, not asserted.
 
 ## Promotion from local run to public profile
 
 For each model and layer:
 
 1. Run the full, unmodified registered instrument from a clean checkout of `1fcc7fc`, with the exact model revision. Do not omit targets, meta-steerability or transfer. Record operating system, device, dtype, Python, PyTorch and Transformers versions and retain the raw JSON.
-2. Validate the raw JSON against the packaged schema and preserve its SHA-256 digest. Confirm that the model, revision, layer, precision, protocol parameters and library versions in the profile match the run record.
+2. Validate the raw JSON against the packaged schema and preserve its SHA-256 digest. Confirm that the model, revision, layer, precision, protocol parameters and library versions in the profile match the run record. Add the digest to `profiles/manifest.json` so the index and EVIDENCE.md are updated in the same commit as the artefact.
 3. Re-run on the same pinned sources or obtain an independent run; compare the complete profiles, investigate differences and record numeric tolerances before calling the result replicated. A passing schema check alone is not replication.
 4. Publish **all** registered outcomes, including `invalid`, `not-expressed`, and profiles that contradict a prediction. Keep model/layer cells visible even when access, compute or dependencies prevent a run.
 5. Report P1–P4 according to the registered rules only after the relevant series is complete. Mark additional analyses exploratory. Preserve original raw files when rendering figures or tables.
