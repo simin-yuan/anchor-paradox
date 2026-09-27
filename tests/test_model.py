@@ -154,6 +154,9 @@ def test_ablation_scales_the_signed_projection_without_inverting_it():
         proj_before = v.double() @ before
         proj_after = v.double() @ after
         assert torch.allclose(proj_after, (1.0 - beta) * proj_before, atol=1e-6), beta
-        if beta <= 1.0:
-            # never a sign flip on any component of the projection
-            assert torch.all(proj_after * proj_before >= -1e-9), beta
+        if beta < 1.0:
+            # The retained projection keeps its sign, allowing roundoff near zero.
+            assert torch.all(proj_after * proj_before >= -1e-7), beta
+        else:
+            # Full ablation should zero the projection up to float32 roundoff.
+            assert torch.allclose(proj_after, torch.zeros_like(proj_after), atol=1e-6), beta

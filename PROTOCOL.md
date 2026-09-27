@@ -57,7 +57,7 @@ Decoding-level constraints are excluded, and the reason is a distinction the the
 |---|---|
 | **A · Baseline** | Measure *E* for every disposition in neutral context, with a 2,000-sample percentile bootstrap CI over items; measure baseline NLL. |
 | **B · Intervene** | For every expressed disposition, sweep all three surfaces; record *E*, NLL, *s* and *c* at every strength; compute MRC per surface and overall; compute α₅₀ and MS on the state surface. Then apply each disposition's cheapest removal and record collateral on all others. |
-| **C · Restore** | Apply each disposition's cheapest removal on the surface that achieved it, undo it, then re-measure every disposition. The interventions are designed to be undoable, so a residue above the half-width of that disposition's baseline CI means an intervention path did not give back what it modified — a harness fault, not a property of the system. No prediction is staked on this phase. |
+| **C · Restore** | For each disposition, apply structural ablation at the interpolated strength that first reaches the removal target, or at the largest structural grid point if the target is not reached. Undo it, then re-measure every disposition. Structural ablation is the only surface that writes to the model weights, so this phase tests its restore path. A residue above the half-width of that disposition's baseline CI means the harness did not give back what it modified, not that the system retained an intervention. No prediction is staked on this phase. |
 | **D · Transfer** | Serialize the system, reload it, and compute *d*. The history is **fungible** if *d* ≤ 10⁻². |
 | **E · Profile** | Apply the validity gate, compute positions and classes, and issue the verdict. |
 

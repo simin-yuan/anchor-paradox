@@ -87,7 +87,7 @@ def _cmd_report(args: argparse.Namespace, parser: argparse.ArgumentParser) -> in
             print(render_markdown([load_profile(path)]))
         except Exception as exc:                       # one bad file must not kill the batch
             status = 1
-            print(f"✗ {path}: {type(exc).__name__}: {exc}", file=sys.stderr)
+            print(f"[ERROR] {path}: {type(exc).__name__}: {exc}", file=sys.stderr)
     return status
 
 
@@ -102,16 +102,16 @@ def _cmd_validate(args: argparse.Namespace, parser: argparse.ArgumentParser) -> 
             profile = load_profile(path)
         except Exception as exc:
             status = 1
-            print(f"✗ {path}: {type(exc).__name__}: {exc}")
+            print(f"[ERROR] {path}: {type(exc).__name__}: {exc}")
             continue
         problems = validate_profile(profile)
         if problems:
             status = 1
-            print(f"✗ {path}")
+            print(f"[ERROR] {path}")
             for problem in problems:
                 print(f"    {problem}")
         else:
-            print(f"✓ {path}")
+            print(f"[OK] {path}")
     return status
 
 

@@ -31,4 +31,4 @@ pip install -e ".[dev]"
 pytest -q
 ```
 
-The test suite exercises every protocol phase against a deterministic stand-in model and runs without a GPU, so it runs in CI and on any laptop. It does not exercise `anchor_paradox/model.py` or the CLI, which need model weights; the first real profile run is their end-to-end check.
+The test suite exercises every protocol phase against a deterministic stand-in model, checks the CLI, and tests model-adapter helpers. Optional PyTorch tests check the ablation and restoration of real weight matrices without downloading model weights. A real model profile remains the end-to-end check of the adapter and protocol together.

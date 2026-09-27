@@ -1,6 +1,6 @@
 # Position in the Field
 
-The Anchor Paradox sits at the intersection of three lines of work. It takes its question from the first, its ontology from the second and its instruments from the third — and gives each something it did not have.
+The Anchor Paradox begins at the intersection of consciousness indicators, life-based accounts and steering science. The [research program](RESEARCH_PROGRAM.md) adds a fourth line: open-world agents and causal tests of self-maintenance.
 
 ---
 
@@ -67,7 +67,17 @@ Argues that language-agent architectures already meet most GWT conditions.
 
 ---
 
-## 5. Summary
+## 5. Open-world agency and the missing persistence test
+
+**Xie, T., et al. (2024).** [*OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments*](https://osworld-v1.xlang.ai/). — Provides interactive computer environments and execution-based evaluation for agents acting across applications. Its task-success measure is valuable for open-world competence; it does not measure whether the agent maintains the conditions of its own existence.
+
+**Samvelyan, M. (2025).** [*Robust Agents in Open-Ended Worlds*](https://arxiv.org/abs/2512.08139). — Develops approaches to generalization under novel environments and interactions, including procedurally generated worlds. Robustness to novelty is one prerequisite for the proposed open-world test, but a robust policy can still be copied and maintained entirely from outside.
+
+**What the Anchor Paradox adds.** A different dependent variable. The proposed test asks whether an agent's own activity causally renews a bounded process under real vulnerability, how history-dependent that organization is, and whether integrated self-regulation is necessary for it. Survival scores and fluent self-description alone cannot answer those questions. A digital simulation tests functional analogues; a claim about ontological stake requires further evidence about a physically realized system boundary.
+
+---
+
+## 6. Summary
 
 | Line of work | Its question | The Anchor Paradox's contribution |
 |---|---|---|
@@ -75,3 +85,4 @@ Argues that language-agent architectures already meet most GWT conditions.
 | Life-based accounts | Is mind rooted in living organization? | A non-circular definition of stake, the reproducibility paradox, and a test that runs on today's systems |
 | Mortal computation | Should software be separable from hardware? | Separability as the hinge of subjecthood; the Transfer phase |
 | Steering science | Can dispositions be moved? | What their movability means; cost-based, calibrated, standardized measurement |
+| Open-world agents | Can agents adapt to novel environments? | Do their own actions maintain the conditions of continued existence? |

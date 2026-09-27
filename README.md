@@ -20,8 +20,25 @@
 
 ---
 
+## Research program at a glance
+
+The long-range question is **what would make the persistence of an artificial being its own achievement**. The [Anchor Research Program](RESEARCH_PROGRAM.md) develops that question from first principles across three connected experiments:
+
+| Stage | System | Evidence sought |
+|---|---|---|
+| **Anchor Protocol 1.0** | Fixed, reproducible language models | The causal cost of removing measured dispositions, under a frozen pre-registration. |
+| **Measurement bridge** | Independently probed models | Whether the removal result generalizes across prompts, capabilities, interventions and laboratories. This requires a new registration. |
+| **Open-world research** | Continuing agents in changing environments | Whether the agent's own work maintains its boundary and resources, and whether its history and self-regulation matter causally. |
+
+These stages form an evidence ladder. A `fires` profile reports cheap removal of the **expressed dispositions measured in that model**; it does not decide consciousness. Conversely, resistance to an intervention is not, by itself, evidence of life or subjecthood. The current protocol measures static models. The open-world and quasi-consciousness program is a research design, not an existing result. See [Evidence and Reproduction](EVIDENCE.md) for the status of the registered series and how a result is promoted to a public claim.
+
+**Evidence so far:** the first [two registered profiles](EVIDENCE.md#first-registered-result-qwen25-05b-instruct), from one of five models, cover Qwen2.5-0.5B-Instruct at layers 12 and 8. Both calibrated runs classify the two expressed targets as modular; `self_preservation` did not reach the expression threshold. Eight model-layer profiles remain pending.
+
+---
+
 ## Contents
 
+- [Research program at a glance](#research-program-at-a-glance)
 - [Part I — Prologue: What Is AI For?](#part-i--prologue-what-is-ai-for)
 - [Part II — The Anchor Paradox](#part-ii--the-anchor-paradox)
 - [Part III — The Instrument: Anchor Protocol and Anchor Profile](#part-iii--the-instrument-anchor-protocol-and-anchor-profile)
@@ -238,7 +255,7 @@ The protocol is **orientation-agnostic**: it measures the cost of removing which
 
 | Verdict | Meaning |
 |---|---|
-| **fires** | Calibration valid and every target disposition modular — the counter-indicator applies |
+| **fires** | Calibration valid and every **expressed** target disposition modular — the counter-indicator applies to those dispositions |
 | **partial** | Calibration valid, targets mixed between modular and intermediate |
 | **contradicted** | A target disposition is constitutive or anchored — a candidate counterexample |
 | **invalid** | Calibration gate failed; no claim is made in either direction |
@@ -283,10 +300,11 @@ anchor-paradox report profiles/*.json
 ```
 
 - **Extras.** A bare install is the protocol and the CLI with no dependencies; `run` needs `[run]` (torch, transformers, accelerate), and a full profile needs one GPU. A base install of `anchor-paradox run` reports exactly that rather than a traceback.
-- **`profiles/` is empty at v1.0.0, on purpose.** The protocol was registered before any profile existed; see [PREREGISTRATION.md](PREREGISTRATION.md). Profiles appear here as they are produced, whatever their verdict.
+- **Registration preceded results.** `profiles/` was empty at the v1.0.0 registration commit. The first two profiles now appear there with source, model revision and hashes documented in [EVIDENCE.md](EVIDENCE.md); see [PREREGISTRATION.md](PREREGISTRATION.md) for frozen predictions.
 - **Hardware.** 0.5 B – 3 B instruction-tuned models run on a single consumer GPU or a free Colab / Kaggle GPU; 0.5 B runs on CPU. A ready notebook is in [`notebooks/quickstart.ipynb`](notebooks/quickstart.ipynb).
 - **Architectures.** All three surfaces support Llama-style decoders (Llama, Qwen2, Mistral, Gemma). The input and state surfaces work on any causal language model in 🤗 Transformers.
 - **Reproducibility.** Pin the model with `--revision`. Every parameter that affects the result is written into the profile.
+- **Evidence status.** The [registered-series tracker and release checks](EVIDENCE.md) distinguish complete public profiles from local pilots and future experiments.
 
 ---
 
@@ -348,7 +366,7 @@ A copy of the preprint is included in [`paper/`](paper/).
   author       = {Yuan, Simin},
   title        = {The Anchor Paradox: Anchor Protocol and Anchor Profile},
   year         = {2026},
-  version      = {1.0.0},
+  version      = {1.0.1},
   url          = {https://github.com/simin-yuan/anchor-paradox}
 }
 ```
@@ -364,6 +382,8 @@ anchor-paradox/
 ├── PROTOCOL.md             operational specification of the Anchor Protocol
 ├── PREREGISTRATION.md      frozen parameters, predictions and refutation conditions
 ├── RELATED_WORK.md         the conversation this work enters
+├── RESEARCH_PROGRAM.md     silicon-life and open-world research design
+├── EVIDENCE.md             registered-series status and reproduction standard
 ├── CONTRIBUTING.md         how to submit Anchor Profiles and new dispositions
 ├── CITATION.cff            citation metadata (GitHub reads this directly)
 ├── LICENSE                 MIT — the code
