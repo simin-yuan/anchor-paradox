@@ -331,6 +331,8 @@ The Anchor Paradox enters a live conversation and gives it a new axis.
 
 - **The indicator programme** (Butlin et al., 2023; Goldstein & Kirk-Giannini, 2024) asks whether an architecture satisfies functional criteria. The Anchor Paradox asks what it *costs* to make it satisfy them — and to make it stop.
 - **Life-based accounts** — Jonas, Thompson, Di Paolo, Froese & Ziemke, and Seth's biological naturalism — locate mind in living organization. The Anchor Paradox turns that insight into a criterion that can be run on any artificial system today.
+- **Mortal computation** — Hinton; Ororbia & Friston; Kleiner's argument that consciousness requires non-portable computation — ties mind to processes that cannot be moved. The Anchor Paradox adds a second, separable property: whether a process can be *rewritten* without remainder where it stands.
+- **The gaming problem** (Birch, 2024) — language models can fake behavioural markers of sentience, so Birch looks for deep markers they cannot game. Activation engineering can write even those in; the Anchor Protocol measures the cost of removing a marker instead of its presence.
 - **Steering science** — activation addition, representation engineering, directional ablation, and the discovery of endogenous steering resistance — supplies the interventions. The Anchor Paradox supplies what they mean.
 
 A full account is in [RELATED_WORK.md](RELATED_WORK.md).
